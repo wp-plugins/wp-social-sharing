@@ -14,7 +14,7 @@ Adds very attractive responsive social sharing buttons of Facebook, Twitter and 
 == Description ==
 
 WP Social sharing adds very attractive responsive social share buttons of Facebook, Twitter and Google+ to wordpress posts, page or media. This plugin is very lightweight and simple social sharing plugin. This plugin provide option whether you want to include plugin CSS/JS or not. 
-Most of the social sharing plugins uses images/api to display social share buttons, but this plugin created large buttons using CSS3. Also these social sharing buttons are responsive. For device width <strong>less than 480px<strong> these button converted into their respective icons.
+Most of the social sharing plugins uses images/api to display social share buttons, but this plugin created large buttons using CSS3. Also these social sharing buttons are responsive. For device width <strong>less than 480px</strong> these button converted into their respective icons.
 
 **Plugin Features**
 
@@ -22,11 +22,11 @@ Most of the social sharing plugins uses images/api to display social share butto
 - Auto display to Post, Page and Media.
 - Custom Social Button text. 
 - 100% responsive. 
-- No Image, button created using CSS3. For device width less than 480px I have used one single image to display social icon.
+- No Image, button created using CSS3. For device width less than 480px, this plugin used one single image to display social icons.
 - Provide Shortcode, can integrated with any theme easily.
 
 **Plugin Shortcode**
-You can use following shortcode
+You can also use following shortcode
 
 `
 [wp_social_sharing] 
