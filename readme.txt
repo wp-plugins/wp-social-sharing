@@ -45,6 +45,7 @@ This shortcode will use default wp social sharing plugin settings.
 
 1. Default social share button
 2. Social share button when width less than 480px
+3. WP Social Sharing Admin Panel
 
 == Installation ==
 
