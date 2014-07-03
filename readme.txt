@@ -2,7 +2,7 @@
 Contributors: arjunjain08
 Author URI: http://www.arjunjain.info
 Plugin URI: http://wordpress.org/plugins/wp-social-sharing/
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X5JGDY&lc=IN&item_name=Social%20Share&item_number=77&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X5JGDY&lc=IN&item_name=WP%20Social%20Sharing&item_number=7&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted
 Tags: responsive social buttons, responsive social sharing buttons, responsive button, social buttons, social sharing, sharing buttons, twitter, googleplus, facebook
 Requires at least: 3.5
 Tested up to: 3.9.1
