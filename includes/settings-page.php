@@ -23,6 +23,31 @@ if( ! defined("SS_VERSION") ) {
 					</td>
 				</tr>
 				<tr valign="top">
+					<th>Social Icon order</th>
+					<td>
+						<div class="dndicon">
+						
+							<?php $s_order=get_option('wss_wp_social_sharing');
+								  if(empty($s_order)) $s_order='f,t,g';
+								  $io=explode(',',rtrim($s_order,','));
+							foreach ($io as $i){
+								switch($i){
+									case 'f':
+										echo '<div class="s-icon facebook-icon" id="f"></div>';				
+										break;
+									case 'g':
+										echo '<div class="s-icon googleplus-icon" id="g"></div>';
+										break;
+									case 't':
+										echo '<div class="s-icon twitter-icon" id="t"></div>';
+										break;
+								}
+							}?>
+						</div>
+					<br /><small><?php _e('Drag the social icon to change the order. No need to save.', 'wp-social-sharing'); ?></small>
+					</td>
+				</tr>
+				<tr valign="top">
 					<th><label for="facebook_text"><?php _e('Facebook Share button text','wp-social-sharing');?></label></th>
 					<td>
 						<input type="text" class="widefat" name="wp_social_sharing[facebook_text]" id="facebook_text" value="<?php echo esc_attr($opts['facebook_text']); ?>"> 

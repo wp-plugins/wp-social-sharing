@@ -14,11 +14,24 @@ class SS_Admin {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_menu_item' ) );
 
-		add_filter( "plugin_action_links_social-sharing/index.php", array( $this, 'add_settings_link' ) );
+		add_filter( "plugin_action_links_wp-social-sharing/index.php", array( $this, 'add_settings_link' ) );
 
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wp-social-sharing' ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'load_css' ) );
 		}
+	}
+	function wss_plugin_activation_action(){
+		$defaults = array(
+				'twitter_username' => "",
+				'auto_add_post_types' => array( 'post' ),
+				'social_options'=>array('facebook','twitter','googleplus'),
+				'load_static'=>array('load_css','load_js'),
+				'facebook_text'=>"Share on Facebook",
+				'twitter_text'=>"Share on Twitter",
+				'googleplus_text'=>"Share on Google+",
+		);
+		update_option( 'wp_social_sharing', $defaults );
+		update_option( 'wss_wp_social_sharing','f,t,g');
 	}
 
 	public function load_css() {
@@ -40,7 +53,7 @@ class SS_Admin {
 	}
 
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="options-general.php?page=social-sharing">'. __('Settings') . '</a>';
+		$settings_link = '<a href="options-general.php?page=wp-social-sharing">'. __('Settings') . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 	}

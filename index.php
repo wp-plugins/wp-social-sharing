@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Social Sharing
-Version: 1.0
+Version: 1.1
 Plugin URI: http://wordpress.org/plugins/wp-social-sharing/
 Description: Adds very attractive responsive social sharing buttons of Facebook, Twitter and Google+ to wordpress posts, pages or media. 
 Author: Arjun Jain
@@ -29,3 +29,5 @@ if( ! is_admin() ) {
 	require SS_PLUGIN_DIR . 'includes/class-admin.php';
 	new SS_Admin();
 }
+
+register_activation_hook(__FILE__, array('SS_Admin','wss_plugin_activation_action'));
