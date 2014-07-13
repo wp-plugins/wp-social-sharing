@@ -56,7 +56,7 @@ This shortcode will use default wp social sharing plugin settings.
 2. Alternatively, download the plugin and upload the contents of `wp-social-sharing.zip` to your plugins directory, which usually is `/wp-content/plugins/`. Activate the plugin.
 
 == Changelog ==
-= 1.1 - July 11, 2014 =
+= 1.1 - July 14, 2014 =
 
 - Fix facebook share for mobile devices
 - Add Icon order functionality. Now user can reorder the social icon.
