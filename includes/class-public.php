@@ -71,6 +71,9 @@ class SS_Public {
 				$loadjs='onclick="return ss_plugin_loadpopup_js(this);"';				
 			}
 		}
+		if($icon_order == '' || $icon_order == null){
+			$icon_order = 'f,t,g';
+		}
 		$icon_order=explode(',',$icon_order);
 		ob_start();
 		?>
