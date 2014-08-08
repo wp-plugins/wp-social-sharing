@@ -8,7 +8,7 @@
 .ss-alert { padding:5px 15px;color: #c09853;background-color: #fcf8e3;border-color: #faebcc;}
 .ss-title{ margin-top: 2em;}
 .dndicon {border:1px solid;display: inline-block;padding: 5px 0;}
-.dndicon .s-icon{cursor:pointer; background-image:url('socialshare.png'); background-repeat: no-repeat;height: 45px; width: 45px; float: left;margin:0 10px}
+.dndicon .s-icon{cursor:move; background-image:url('socialshare.png'); background-repeat: no-repeat;height: 45px; width: 45px; float: left;margin:0 10px}
 .dndicon .facebook-icon{background-position: 0 -45px;}
 .dndicon .twitter-icon {background-position: -45px -45px;}
 .dndicon .googleplus-icon{background-position: -90px -45px;}

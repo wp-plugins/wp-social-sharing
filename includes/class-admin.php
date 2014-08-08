@@ -29,6 +29,7 @@ class SS_Admin {
 				'facebook_text'=>"Share on Facebook",
 				'twitter_text'=>"Share on Twitter",
 				'googleplus_text'=>"Share on Google+",
+				'show_icons'=>'0',
 		);
 		update_option( 'wp_social_sharing', $defaults );
 		update_option( 'wss_wp_social_sharing','f,t,g');

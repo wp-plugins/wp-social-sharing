@@ -8,20 +8,20 @@ if( ! defined( "SS_VERSION" ) ) {
 class SS_Public {
 	
 	public function __construct() {
-		add_filter( 'the_content', array( $this, 'add_links' ) );
+		add_filter( 'the_content', array( $this, 'add_links_after_content' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ), 99 );
 		add_shortcode( 'wp_social_sharing',array($this,'social_sharing'));
 	}
 	
-	public function add_links( $content )
+	public function add_links_after_content( $content )
 	{
 		$opts = ss_get_options();
 		$show_buttons = false;
-	
+		
 		if( ! empty( $opts['auto_add_post_types'] ) && in_array( get_post_type(), $opts['auto_add_post_types'] ) && is_singular( $opts['auto_add_post_types'] ) ) {
 			$show_buttons = true;
 		}
-		
+			
 		$show_buttons = apply_filters( 'ss_display', $show_buttons );
 	
 		if( ! $show_buttons ) {
@@ -44,56 +44,62 @@ class SS_Public {
 		}
 	}
 
-	function social_sharing( $args = array() ) {
-	
-		$opts = ss_get_options();
-		$defaults = array(
+	public function social_sharing( $atts=array()) {
+		extract(shortcode_atts(array(
 				'social_options' => 'twitter, facebook, googleplus',
-				'twitter_username' => $opts['twitter_username'],
-				'twitter_text' => __( 'Twitter', 'social-sharing' ),
-				'facebook_text' => __( 'Facebook', 'social-sharing' ),
-				'googleplus_text' => __( 'Google+', 'social-sharing' ),
-				'icon_order'=>'f,t,g'
-		);
-	
-		$opts['icon_order']=get_option('wss_wp_social_sharing');
+				'twitter_username' => '',
+				'twitter_text' => __( 'Share on Twitter ', 'social-sharing' ),
+				'facebook_text' => __( 'Share on Facebook', 'social-sharing' ),
+				'googleplus_text' => __( 'Share on Google+', 'social-sharing' ),
+				'icon_order'=>'f,t,g',
+				'show_icons'=>'0'	
+		),$atts));
 
-		if(!is_array($args['social_options']))
-			$args['social_options'] = array_filter( array_map( 'trim', explode( ',', $args['social_options'] ) ) );
-		extract( $args );
-	
+		if(!is_array($social_options))
+			$social_options = array_filter( array_map( 'trim', explode( ',',$social_options ) ) );
+		
 		$title = urlencode( get_the_title() );
 		$url = urlencode( get_permalink() );
 		
 		$loadjs='';
+		
+		$opts=ss_get_options();
 		foreach ($opts['load_static'] as $static){
-			if($static == 'load_js'){
-				$loadjs='onclick="return ss_plugin_loadpopup_js(this);"';				
-			}
+		    if($static == 'load_js'){
+		       $loadjs='onclick="return ss_plugin_loadpopup_js(this);"';
+		    }
 		}
-		if($icon_order == '' || $icon_order == null){
-			$icon_order = 'f,t,g';
+		
+		$ssbutton_facebook='button-facebook';
+		$ssbutton_twitter='button-twitter';
+		$ssbutton_googleplus='button-googleplus';
+		$sssocial_sharing='';
+		if($show_icons){
+			$sssocial_sharing='ss-social-sharing';
+			$ssbutton_facebook='ss-button-facebook';
+			$ssbutton_twitter='ss-button-twitter';
+			$ssbutton_googleplus='ss-button-googleplus';	
 		}
 		$icon_order=explode(',',$icon_order);
 		ob_start();
 		?>
-		<div class="social-sharing">
+		<div class="social-sharing <?php echo $sssocial_sharing;?>">
 	        <?php 
 	        foreach($icon_order as $o) {
 	        	switch($o) {
 	        		case 'f':
 	        			if(in_array('facebook', $social_options)){
-	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="button-facebook ss-sbutton" href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank" ><?php echo $facebook_text; ?></a><?php
+	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_facebook;?>" href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank" ><?php echo $facebook_text; ?></a><?php
 	        			}
 	        		break;
 	        		case 't':
 	        			if(in_array('twitter', $social_options)){
-	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="button-twitter ss-sbutton" href="http://twitter.com/intent/tweet/?text=<?php echo $title; ?>&url=<?php echo $url; ?><?php if(!empty($twitter_username)) {  echo '&via=' . $twitter_username; } ?>" target="_blank"><?php echo $twitter_text; ?></a><?php
+	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_twitter;?>" href="http://twitter.com/intent/tweet/?text=<?php echo $title; ?>&url=<?php echo $url; ?><?php if(!empty($twitter_username)) {  echo '&via=' . $twitter_username; } ?>" target="_blank"><?php echo $twitter_text; ?></a><?php
 	        			}
 	        		break;
 	        		case 'g':
 	        			if(in_array('googleplus', $social_options)){
-	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="button-googleplus ss-sbutton" href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" ><?php echo $googleplus_text; ?></a><?php
+	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_googleplus;?>" href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" ><?php echo $googleplus_text; ?></a><?php
 	        			}
 	        		break;
 	        	}

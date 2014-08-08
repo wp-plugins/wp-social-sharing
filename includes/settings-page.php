@@ -26,7 +26,6 @@ if( ! defined("SS_VERSION") ) {
 					<th>Social Icon order</th>
 					<td>
 						<div class="dndicon">
-						
 							<?php $s_order=get_option('wss_wp_social_sharing');
 								  if(empty($s_order)) $s_order='f,t,g';
 								  $io=explode(',',rtrim($s_order,','));
@@ -45,6 +44,12 @@ if( ! defined("SS_VERSION") ) {
 							}?>
 						</div>
 					<br /><small><?php _e('Drag the social icon to change the order. No need to save.', 'wp-social-sharing'); ?></small>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th><label for="alws_show_icons"><?php _e('Always show social icons','wp-social-sharing');?></label></th>
+					<td>
+						<input type="checkbox" id="alws_show_icons" name="wp_social_sharing[show_icons]" value="1" <?php checked(  '1', $opts['show_icons'], true ); ?>>
 					</td>
 				</tr>
 				<tr valign="top">

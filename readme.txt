@@ -5,16 +5,16 @@ Plugin URI: http://wordpress.org/plugins/wp-social-sharing/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X5JGDY&lc=IN&item_name=WP%20Social%20Sharing&item_number=7&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted
 Tags: responsive social buttons, responsive social sharing buttons, responsive button, social buttons, social sharing, sharing buttons, twitter, googleplus, facebook
 Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 1.1
+Tested up to: 3.9.2
+Stable tag: 1.2
 License: GPLv3 
 
 Adds very attractive responsive social sharing buttons of Facebook, Twitter and Google+ to wordpress posts, pages or media.
 
 == Description ==
 
-WP Social sharing adds very attractive responsive social share buttons of Facebook, Twitter and Google+ to wordpress posts, page or media. This plugin is very lightweight and simple social sharing plugin. This plugin provide option whether you want to include plugin CSS/JS or not. 
-Most of the social sharing plugins uses images/api to display social share buttons, but this plugin created large buttons using CSS3. Also these social sharing buttons are responsive. For device width <strong>less than 480px</strong> these button converted into their respective icons.
+WP Social sharing adds very attractive responsive social share buttons of Facebook, Twitter and Google+ to wordpress posts, page or media. This is very lightweight and simple social sharing plugin. This plugin provide option whether you want to include plugin CSS/JS or not. 
+Most of the social sharing plugins uses images/api to display social share buttons, but this plugin created large social sharing buttons using CSS3. Also these social sharing buttons are responsive. For device width <strong>less than 480px</strong> these buttons converted into their respective icons.
 
 **Plugin Features**
 
@@ -29,13 +29,8 @@ Most of the social sharing plugins uses images/api to display social share butto
 **Plugin Shortcode**
 You can also use following shortcode
 
-`
-[wp_social_sharing] 
-`
-This shortcode will use default wp social sharing plugin settings.
-
 ` 
-[wp_social_sharing social_options='facebook,twitter,googleplus' twitter_username='arjun077' facebook_text='Share on Facebook' twitter_text='Share on Twitter' googleplus_text='Share on Google+' icon_order='f,t,g']
+[wp_social_sharing social_options='facebook,twitter,googleplus' twitter_username='arjun077' facebook_text='Share on Facebook' twitter_text='Share on Twitter' googleplus_text='Share on Google+' icon_order='f,t,g' show_icons='0']
 `
 
 == Support ==
@@ -56,13 +51,19 @@ This shortcode will use default wp social sharing plugin settings.
 2. Alternatively, download the plugin and upload the contents of `wp-social-sharing.zip` to your plugins directory, which usually is `/wp-content/plugins/`. Activate the plugin.
 
 == Changelog ==
+
+= 1.2 - August 8, 2014 =
+- Fixed empty shortcode.
+- Add option for always display social icons.
+- Update plugin shortcode. Add *show_icons* field.
+
 = 1.1 - July 14, 2014 =
 
-- Fix facebook share for mobile devices
+- Fixed facebook share for mobile devices
 - Add Icon order functionality. Now user can reorder the social icon.
 - Add settings link on plugin page.
 - Update plugin shortcode. Add *icon_order* field
 
 = 1.0 - June 30, 2014 =
 
-- Initial release.
+- First release.
