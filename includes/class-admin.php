@@ -29,12 +29,10 @@ class SS_Admin {
 				'facebook_text'=>"Share on Facebook",
 				'twitter_text'=>"Share on Twitter",
 				'googleplus_text'=>"Share on Google+",
-				'linkedin_text'=>"Share on Linkedin",
 				'show_icons'=>'0',
 		);
 		update_option( 'wp_social_sharing', $defaults );
-		update_option( 'wss_wp_social_sharing','f,t,g,l');
-		update_option( 'wss_pluign_version ',SS_VERSION);
+		update_option( 'wss_wp_social_sharing','f,t,g');
 	}
 
 	public function load_css() {
