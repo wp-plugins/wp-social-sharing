@@ -9,9 +9,10 @@
 .ss-title{ margin-top: 2em;}
 .dndicon {border:1px solid;display: inline-block;padding: 5px 0;}
 .dndicon .s-icon{cursor:move; background-image:url('socialshare.png'); background-repeat: no-repeat;height: 45px; width: 45px; float: left;margin:0 10px}
-.dndicon .facebook-icon{background-position: 0 -45px;}
-.dndicon .twitter-icon {background-position: -45px -45px;}
-.dndicon .googleplus-icon{background-position: -90px -45px;}
+.dndicon .twitter-icon{background-position: 0 -45px;}
+.dndicon .googleplus-icon {background-position: -45px -45px;}
+.dndicon .facebook-icon{background-position: -90px -45px;}
+.dndicon .linkedin-icon{background-position: -135px -45px;}
 
 @media(max-width: 919px) {
 .ss-column{float: none;width: 100%;}

@@ -13,11 +13,12 @@ function ss_get_options()
 		$defaults = array(
 			'twitter_username' => "",
 			'auto_add_post_types' => array( 'post' ),
-			'social_options'=>array('facebook','twitter','googleplus'),
+			'social_options'=>array('facebook','twitter','googleplus','linkedin'),
 			'load_static'=>array('load_css','load_js'),
 			'facebook_text'=>"Share on Facebook",
 			'twitter_text'=>"Share on Twitter",
 			'googleplus_text'=>"Share on Google+",
+			'linkedin_text'=>"Share on Linkedin",
 		);
 
 		$db_option = get_option( 'wp_social_sharing', array());

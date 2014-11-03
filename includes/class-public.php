@@ -44,14 +44,15 @@ class SS_Public {
 		}
 	}
 
-	public function social_sharing( $atts=array()) {
+	public function social_sharing( $atts=array() ) {
 		extract(shortcode_atts(array(
 				'social_options' => 'twitter, facebook, googleplus',
 				'twitter_username' => '',
 				'twitter_text' => __( 'Share on Twitter ', 'social-sharing' ),
 				'facebook_text' => __( 'Share on Facebook', 'social-sharing' ),
 				'googleplus_text' => __( 'Share on Google+', 'social-sharing' ),
-				'icon_order'=>'f,t,g',
+				'linkedin_text' => __('Share on Linkedin', 'social-sharing' ),
+				'icon_order'=>'f,t,g,l',
 				'show_icons'=>'0'	
 		),$atts));
 
@@ -60,7 +61,7 @@ class SS_Public {
 		
 		$title = urlencode( get_the_title() );
 		$url = urlencode( get_permalink() );
-		
+	
 		$loadjs='';
 		
 		$opts=ss_get_options();
@@ -73,12 +74,14 @@ class SS_Public {
 		$ssbutton_facebook='button-facebook';
 		$ssbutton_twitter='button-twitter';
 		$ssbutton_googleplus='button-googleplus';
+		$ssbutton_linkedin='button-linkedin';
 		$sssocial_sharing='';
 		if($show_icons){
 			$sssocial_sharing='ss-social-sharing';
 			$ssbutton_facebook='ss-button-facebook';
 			$ssbutton_twitter='ss-button-twitter';
-			$ssbutton_googleplus='ss-button-googleplus';	
+			$ssbutton_googleplus='ss-button-googleplus';
+			$ssbutton_linkedin='ss-button-linkedin';	
 		}
 		$icon_order=explode(',',$icon_order);
 		ob_start();
@@ -101,6 +104,11 @@ class SS_Public {
 	        			if(in_array('googleplus', $social_options)){
 	        			?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_googleplus;?>" href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank" ><?php echo $googleplus_text; ?></a><?php
 	        			}
+	        		break;
+					case 'l':
+						if(in_array('linkedin', $social_options)){
+							?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_linkedin;?>" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo substr($url,0,1024);?>&title=<?php echo substr($title,0,200);?>" target="_blank" ><?php echo $linkedin_text; ?></a><?php
+						}
 	        		break;
 	        	}
 	        } ?>
