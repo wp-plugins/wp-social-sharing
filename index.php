@@ -31,3 +31,20 @@ if( ! is_admin() ) {
 }
 
 register_activation_hook(__FILE__, array('SS_Admin','wss_plugin_activation_action'));
+
+add_action( 'plugins_loaded', 'wss_update_db_check_while_plugin_upgrade' );
+
+function wss_update_db_check_while_plugin_upgrade(){
+	$current_version=get_option('wss_plugin_version');
+	if($current_version === FALSE)
+		$current_version='1.0';
+	
+	// change for linkedin button
+	if($current_version != '1.3'){
+		update_option('wss_wp_social_sharing','f,t,g,l');
+		$default=get_option('wp_social_sharing');
+		$default['linkedin_text']='Share on Linkedin';
+		update_option('wp_social_sharing',$default);
+		update_option('wss_plugin_version','1.3');
+	}
+}
