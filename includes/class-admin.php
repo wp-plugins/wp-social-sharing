@@ -20,6 +20,7 @@ class SS_Admin {
 			add_action( 'admin_enqueue_scripts', array( $this, 'load_css' ) );
 		}
 	}
+	
 	function wss_plugin_activation_action(){
 		$defaults = array(
 				'twitter_username' => "",
@@ -29,12 +30,14 @@ class SS_Admin {
 				'facebook_text'=>"Share on Facebook",
 				'twitter_text'=>"Share on Twitter",
 				'googleplus_text'=>"Share on Google+",
+				'linkedin_text'=>"Share on Linkedin",
 				'show_icons'=>'0',
 		);
 		update_option( 'wp_social_sharing', $defaults );
-		update_option( 'wss_wp_social_sharing','f,t,g');
+		update_option( 'wss_wp_social_sharing','f,t,g,l');
+		update_option( 'wss_pluign_version ',SS_VERSION);
 	}
-
+	
 	public function load_css() {
 		wp_enqueue_style( 'social-sharing', SS_PLUGIN_URL . 'static/admin-styles.css' );
 	}
