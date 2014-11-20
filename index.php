@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Social Sharing
-Version: 1.3
+Version: 1.4
 Plugin URI: http://wordpress.org/plugins/wp-social-sharing/
 Description: Adds very attractive responsive social sharing buttons of Facebook, Twitter, Linkedin and Google+ to wordpress posts, pages or media. 
 Author: Arjun Jain
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( "SS_VERSION", "1.3" );
+define( "SS_VERSION", "1.3" );  // db versioin
 define( "SS_PLUGIN_DIR", plugin_dir_path( __FILE__ ) ); 
 define( "SS_PLUGIN_URL", plugins_url( '/' , __FILE__ ) );
 
@@ -35,12 +35,12 @@ register_activation_hook(__FILE__, array('SS_Admin','wss_plugin_activation_actio
 add_action( 'plugins_loaded', 'wss_update_db_check_while_plugin_upgrade' );
 
 function wss_update_db_check_while_plugin_upgrade(){
-	$current_version=get_option('wss_plugin_version');
-	if($current_version === FALSE)
-		$current_version='1.0';
+	$db_version=get_option('wss_plugin_version');
+	if($db_version === FALSE)
+		$db_version='1.0';
 	
 	// change for linkedin button
-	if($current_version != '1.3'){
+	if($db_version != '1.3' ){
 		update_option('wss_wp_social_sharing','f,t,g,l');
 		$default=get_option('wp_social_sharing');
 		$default['linkedin_text']='Share on Linkedin';

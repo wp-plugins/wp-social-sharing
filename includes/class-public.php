@@ -59,7 +59,10 @@ class SS_Public {
 		if(!is_array($social_options))
 			$social_options = array_filter( array_map( 'trim', explode( ',',$social_options ) ) );
 		
-		$title = urlencode( get_the_title() );
+		remove_filter('the_title','wptexturize');
+		$title = urlencode(html_entity_decode(get_the_title()));
+		add_filter('the_title','wptexturize');
+		
 		$url = urlencode( get_permalink() );
 	
 		$loadjs='';
