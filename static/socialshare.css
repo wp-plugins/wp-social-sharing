@@ -10,7 +10,7 @@ a.button-twitter:hover {background-color: #00aced;background: -moz-linear-gradie
 a.button-linkedin {background-color: #0073b2;background: -moz-linear-gradient(top, #009cda, #0073b2);background:-ms-linear-gradient(top, #009cda, #0073b2);background: -webkit-linear-gradient(top, #009cda, #0073b2);text-shadow: 0 -1px -1px #005486;}
 a.button-linkedin:hover{background-color: #009cda;background: -moz-linear-gradient(top, #0073b2, #009cda);background: -ms-linear-gradient(top, #0073b2, #009cda);background: -webkit-linear-gradient(top, #0073b2, #009cda);color:#fff;}
 
-.ss-social-sharing a{text-indent: -999px;}
+.ss-social-sharing a{text-indent: -99999px;}
 a.ss-button-facebook, a.ss-button-googleplus, a.ss-button-twitter, a.ss-button-linkedin{background-image: url(socialshare.png);width: 45px;height: 45px;background-repeat: no-repeat;padding: 0px;border: 0px;margin:1% 1% 1% 0;display: inline-block;}
 a.ss-button-twitter{background-position:0px -45px;}a.ss-button-twitter:hover{background-position:0px 0px;transition-delay: 0s;transition-duration: 250ms;transition-property: all; transition-timing-function: ease-in-out;}
 a.ss-button-googleplus{background-position: -45px -45px;}a.ss-button-googleplus:hover{background-position: -45px 0px;transition-delay: 0s;transition-duration: 250ms;transition-property: all; transition-timing-function: ease-in-out;}
@@ -19,7 +19,7 @@ a.ss-button-linkedin{background-position: -135px -45px;}a.ss-button-linkedin:hov
 
 /* Smartphones (portrait and landscape) */
 @media (max-width : 480px){
-.social-sharing a{text-indent: -999px;}
+.social-sharing a{text-indent: -99999px;}
 a.button-facebook, a.button-googleplus,a.button-twitter,a.button-linkedin{background-image: url(socialshare.png) !important;width: 45px;height: 45px;background-repeat: no-repeat;padding: 0px;border: 0px;}
 a.button-twitter{background-position:0px -45px; }a.button-facebook:hover{background-position:0px 0px;transition-delay: 0s;transition-duration: 250ms;transition-property: all; transition-timing-function: ease-in-out;}
 a.button-googleplus{background-position: -45px -45px;}a.button-twitter:hover{background-position: -45px 0px;transition-delay: 0s;transition-duration: 250ms;transition-property: all; transition-timing-function: ease-in-out;}

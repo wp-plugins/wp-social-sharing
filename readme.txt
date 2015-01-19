@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X
 Tags: responsive social buttons, responsive social sharing buttons, responsive button, social buttons, social sharing, sharing buttons, twitter, googleplus, facebook, linkedin, custom post type
 Requires at least: 3.5
 Tested up to: 4.1.0
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv3 
 
 Adds very attractive responsive social sharing buttons of Facebook, Twitter, Linkedin and Google+ to wordpress posts, pages or media.
@@ -32,6 +32,7 @@ You can also use following shortcode
 ` 
 [wp_social_sharing social_options='facebook,twitter,googleplus,linkedin' twitter_username='arjun077' facebook_text='Share on Facebook' twitter_text='Share on Twitter' googleplus_text='Share on Google+' linkedin_text='Share on Linkedin' icon_order='f,t,g,l' show_icons='0']
 `
+[Demo](http://www.arjunjain.info/wp-social-sharing/)
 
 == Support ==
 
@@ -51,6 +52,9 @@ You can also use following shortcode
 2. Alternatively, download the plugin and upload the contents of `wp-social-sharing.zip` to your plugins directory, which usually is `/wp-content/plugins/`. Activate the plugin.
 
 == Changelog ==
+
+= 1.5 - January 19, 2015 = 
+- Fixed button text 
 
 = 1.4 - November 20, 2014 = 
 - Fixed post title encoding in social sharing 
