@@ -13,7 +13,7 @@ class SS_Admin {
 
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_menu_item' ) );
-
+		
 		add_filter( "plugin_action_links_wp-social-sharing/index.php", array( $this, 'add_settings_link' ) );
 
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wp-social-sharing' ) {
@@ -31,15 +31,19 @@ class SS_Admin {
 				'twitter_text'=>"Share on Twitter",
 				'googleplus_text'=>"Share on Google+",
 				'linkedin_text'=>"Share on Linkedin",
+				'pinterest_text'=>"Share on Pinterest",
+				'pinterest_image'=>"",
 				'show_icons'=>'0',
 		);
 		update_option( 'wp_social_sharing', $defaults );
-		update_option( 'wss_wp_social_sharing','f,t,g,l');
+		update_option( 'wss_wp_social_sharing','f,t,g,l,p');
 		update_option( 'wss_pluign_version ',SS_VERSION);
 	}
 	
 	public function load_css() {
-		wp_enqueue_style( 'social-sharing', SS_PLUGIN_URL . 'static/admin-styles.css' );
+		wp_enqueue_style ( 'wp-social-sharing', SS_PLUGIN_URL . 'static/admin-styles.css' );
+		wp_enqueue_media();
+		wp_enqueue_script( 'wp-social-sharing', SS_PLUGIN_URL . 'static/socialshareadmin.js', array(), SS_VERSION, true );
 	}
 
 	public function register_settings() {
@@ -51,6 +55,9 @@ class SS_Admin {
 		$settings['facebook_text'] = trim( strip_tags( $settings['facebook_text'] ) );
 		$settings['twitter_text'] = trim( strip_tags( $settings['twitter_text'] ) );
 		$settings['googleplus_text'] = trim( strip_tags( $settings['googleplus_text'] ) );
+		$settings['linkedin_text'] = trim( strip_tags( $settings['linkedin_text'] ) );
+		$settings['pinterest_text'] = trim( strip_tags( $settings['pinterest_text'] ) );
+		$settings['pinterest_image'] = trim( strip_tags( $settings['pinterest_image'] ) );
 		$settings['auto_add_post_types'] = ( isset( $settings['auto_add_post_types'] ) ) ? $settings['auto_add_post_types'] : array();
 		$settings['show_sharebutton'] = ( isset( $settings['show_sharebutton'] ) ) ? $settings['show_sharebutton'] : array();
 		return $settings;

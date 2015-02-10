@@ -21,6 +21,7 @@ if( ! defined("SS_VERSION") ) {
 						<input type="checkbox" id="twitter_share" name="wp_social_sharing[social_options][]" value="twitter" <?php checked( in_array( 'twitter', $opts['social_options'] ), true ); ?> /><label for="twitter_share"><?php echo _e('Twitter','wp-social-sharing')?></label>
 						<input type="checkbox" id="googleplus_share" name="wp_social_sharing[social_options][]" value="googleplus" <?php checked( in_array( 'googleplus', $opts['social_options'] ), true ); ?> /><label for="googleplus_share"><?php echo _e('Google Plus','wp-social-sharing')?></label>
 						<input type="checkbox" id="linkedin_share" name="wp_social_sharing[social_options][]" value="linkedin" <?php checked( in_array( 'linkedin', $opts['social_options'] ), true ); ?> /><label for="linkedin_share"><?php echo _e('Linkedin','wp-social-sharing')?></label>
+						<input type="checkbox" id="pinterest_share" name="wp_social_sharing[social_options][]" value="pinterest" <?php checked( in_array( 'pinterest', $opts['social_options'] ), true ); ?> /><label for="pinterest_share"><?php echo _e('Pinterest','wp-social-sharing')?></label>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -28,7 +29,7 @@ if( ! defined("SS_VERSION") ) {
 					<td>
 						<div class="dndicon">
 							<?php $s_order=get_option('wss_wp_social_sharing');
-								  if(empty($s_order)) $s_order='f,t,g,l';
+								  if(empty($s_order)) $s_order='f,t,g,l,p';
 								  $io=explode(',',rtrim($s_order,','));
 							foreach ($io as $i){
 								switch($i){
@@ -43,6 +44,9 @@ if( ! defined("SS_VERSION") ) {
 										break;
 									case 'l':
 										echo '<div class="s-icon linkedin-icon" id="l"></div>';	
+										break;
+									case 'p':
+										echo '<div class="s-icon pinterest-icon" id="p"></div>';
 										break;
 								}
 							}?>
@@ -71,13 +75,28 @@ if( ! defined("SS_VERSION") ) {
 				<tr valign="top">
 					<th><label for="googleplus_text"><?php _e('Google plus share button text','wp-social-sharing');?></label></th>
 					<td>
-						<input type="text" name="wp_social_sharing[googleplus_text]" id="googleplus_text" class="widefat" value="<?php echo esc_attr($opts['googleplus_text']); ?>"> 
+						<input type="text" name="wp_social_sharing[googleplus_text]" id="googleplus_text" class="widefat" value="<?php echo esc_attr($opts['googleplus_text']); ?>" /> 
 					</td>
 				</tr>
 				<tr valign="top">
 					<th><label for="linkedin_text"><?php _e('Linkedin share button text','wp-social-sharing');?></label></th>
 					<td>
-						<input type="text" name="wp_social_sharing[linkedin_text]" id="linkedin_text" class="widefat" value="<?php echo esc_attr($opts['linkedin_text']); ?>"> 
+						<input type="text" name="wp_social_sharing[linkedin_text]" id="linkedin_text" class="widefat" value="<?php echo esc_attr($opts['linkedin_text']); ?>" /> 
+					</td>
+				</tr>
+				<tr valign="top">
+					<th><label for="pinterest_text"><?php _e('Pinterest share button text','wp-social-sharing');?></label></th>
+					<td>
+						<input type="text" name="wp_social_sharing[pinterest_text]" id="pinterest_text" class="widefat" value="<?php echo esc_attr($opts['pinterest_text']); ?>" /> 
+					</td>
+				</tr>
+				<tr valign="top">
+					<th><label for="pinterest_image"><?php _e('Default share image','wp-social-sharing')?></label></th>
+					<td>
+						<input type="text" name="wp_social_sharing[pinterest_image]" id="pinterest_image"  value="<?php echo esc_attr($opts['pinterest_image']); ?>"/><input type="button" class="set_custom_images button" id="set_custom_images" value="<?php _e('Upload','wp-social-sharing')?>" />
+						<input type="button" class="button" id="remove_custom_images" value="<?php _e('Remove','wp-social-sharing')?>" />
+						<br /><small><?php _e('Required for Pinterest', 'wp-social-sharing'); ?></small>
+						<div id="set_custom_image_src"><?php if($opts['pinterest_image'] != ''): ?><img src="<?php echo $opts['pinterest_image'];?>" width="100px" /> <?php endif;?></div>
 					</td>
 				</tr>
 				<tr>

@@ -52,7 +52,9 @@ class SS_Public {
 				'facebook_text' => __( 'Share on Facebook', 'social-sharing' ),
 				'googleplus_text' => __( 'Share on Google+', 'social-sharing' ),
 				'linkedin_text' => __('Share on Linkedin', 'social-sharing' ),
-				'icon_order'=>'f,t,g,l',
+				'pinterest_text'=>__('Share on Pinterest','social-sharing'),
+				'social_image'=> '', 
+				'icon_order'=>'f,t,g,l,p',
 				'show_icons'=>'0'	
 		),$atts));
 
@@ -67,6 +69,21 @@ class SS_Public {
 	
 		$loadjs='';
 		
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'medium' );
+		$thumb_url = $thumb['0'];
+		if($thumb_url == ''){
+			if($atts['pinterest_image'] == ''){
+				$thumb_url = SS_PLUGIN_URL.'static/blank.jpg';								
+			}
+			else{
+				$thumb_url = $atts['pinterest_image'];	
+			}
+		}
+		if($social_image == ''){
+			$social_image = $thumb_url;
+		}
+		$social_image = urlencode($social_image);
+		
 		$opts=ss_get_options();
 		foreach ($opts['load_static'] as $static){
 		    if($static == 'load_js'){
@@ -78,6 +95,7 @@ class SS_Public {
 		$ssbutton_twitter='button-twitter';
 		$ssbutton_googleplus='button-googleplus';
 		$ssbutton_linkedin='button-linkedin';
+		$ssbutton_pinterest='button-pinterest';
 		$sssocial_sharing='';
 		if($show_icons){
 			$sssocial_sharing='ss-social-sharing';
@@ -85,6 +103,7 @@ class SS_Public {
 			$ssbutton_twitter='ss-button-twitter';
 			$ssbutton_googleplus='ss-button-googleplus';
 			$ssbutton_linkedin='ss-button-linkedin';	
+			$ssbutton_pinterest='ss-button-pinterest';
 		}
 		$icon_order=explode(',',$icon_order);
 		ob_start();
@@ -112,6 +131,11 @@ class SS_Public {
 						if(in_array('linkedin', $social_options)){
 							?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_linkedin;?>" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo substr($url,0,1024);?>&title=<?php echo substr($title,0,200);?>" target="_blank" ><?php echo $linkedin_text; ?></a><?php
 						}
+	        		break;
+	        		case 'p':
+	        			if(in_array('pinterest', $social_options)){
+	        				?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_pinterest;?>" href="http://pinterest.com/pin/create/button/?url=<?php echo $url;?>&media=<?php echo $social_image;?>&description=<?php echo $title;?>" target="_blank" ><?php echo $pinterest_text; ?></a><?php
+	        			}
 	        		break;
 	        	}
 	        } ?>
