@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/wp-social-sharing/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X5JGDY&lc=IN&item_name=WP%20Social%20Sharing&item_number=7&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted
 Tags: responsive social buttons, responsive social sharing buttons, responsive button, social buttons, social sharing, sharing buttons, twitter, googleplus, facebook, linkedin, pinterest, add to custom post type
 Requires at least: 3.5
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 Stable tag: 1.6
 License: GPLv3 
 
