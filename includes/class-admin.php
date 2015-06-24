@@ -34,6 +34,7 @@ class SS_Admin {
 				'pinterest_text'=>"Share on Pinterest",
 				'pinterest_image'=>"",
 				'show_icons'=>'0',
+				'before_button_text'=>''
 		);
 		update_option( 'wp_social_sharing', $defaults );
 		update_option( 'wss_wp_social_sharing','f,t,g,l,p');
@@ -51,6 +52,7 @@ class SS_Admin {
 	}
 
 	public function sanitize_settings( $settings ) {
+		$settings['before_button_text'] = trim( strip_tags( $settings['before_button_text'] ) );
 		$settings['twitter_username'] = trim( strip_tags( $settings['twitter_username'] ) );
 		$settings['facebook_text'] = trim( strip_tags( $settings['facebook_text'] ) );
 		$settings['twitter_text'] = trim( strip_tags( $settings['twitter_text'] ) );

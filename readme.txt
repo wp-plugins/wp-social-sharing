@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SQC4WR7X
 Tags: responsive social buttons, responsive social sharing buttons, responsive button, social buttons, social sharing, sharing buttons, twitter, googleplus, facebook, linkedin, pinterest, add to custom post type
 Requires at least: 3.5
 Tested up to: 4.2.2
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv3 
 
 Adds very attractive responsive social sharing buttons of Facebook, Twitter, Linkedin, Pinterest and Google+ to wordpress posts, pages or media.
@@ -25,12 +25,13 @@ Most of the social sharing plugins uses images/api to display social share butto
 - Reorder Social icon order easily.
 - No Image, button created using CSS3. For device width less than 480px, this plugin used one single image to display social icons.
 - Provide Shortcode, can integrated with any theme easily.
+- Add text before share buttons
 
 **Plugin Shortcode**
 You can also use following shortcode
 
 ` 
-[wp_social_sharing social_options='facebook,twitter,googleplus,linkedin,pinterest' twitter_username='arjun077' facebook_text='Share on Facebook' twitter_text='Share on Twitter' googleplus_text='Share on Google+' linkedin_text='Share on Linkedin' pinterest_text="Share on Pinterest" icon_order='f,t,g,l,p' show_icons='0']
+[wp_social_sharing social_options='facebook,twitter,googleplus,linkedin,pinterest' twitter_username='arjun077' facebook_text='Share on Facebook' twitter_text='Share on Twitter' googleplus_text='Share on Google+' linkedin_text='Share on Linkedin' pinterest_text="Share on Pinterest" icon_order='f,t,g,l,p' show_icons='0' before_button_text='' social_image='']
 `
 [Demo](http://www.arjunjain.info/wp-social-sharing/)
 
@@ -52,6 +53,9 @@ You can also use following shortcode
 2. Alternatively, download the plugin and upload the contents of `wp-social-sharing.zip` to your plugins directory, which usually is `/wp-content/plugins/`. Activate the plugin.
 
 == Changelog ==
+= 1.7 - June 24, 2015 =
+- Add Text Before sharing buttons
+
 = 1.6 - February 10, 2015 = 
 - Add Pinterest share button
 - Update button CSS

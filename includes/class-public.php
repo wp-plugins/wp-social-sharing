@@ -55,7 +55,8 @@ class SS_Public {
 				'pinterest_text'=>__('Share on Pinterest','social-sharing'),
 				'social_image'=> '', 
 				'icon_order'=>'f,t,g,l,p',
-				'show_icons'=>'0'	
+				'show_icons'=>'0',
+				'before_button_text'=>''
 		),$atts));
 
 		if(!is_array($social_options))
@@ -109,6 +110,9 @@ class SS_Public {
 		ob_start();
 		?>
 		<div class="social-sharing <?php echo $sssocial_sharing;?>">
+			<?php if(!empty($before_button_text)):?>
+			<span><?php echo $before_button_text; ?></span>
+	        <?php endif;?>
 	        <?php 
 	        foreach($icon_order as $o) {
 	        	switch($o) {

@@ -57,19 +57,25 @@ if( ! defined("SS_VERSION") ) {
 				<tr valign="top">
 					<th><label for="alws_show_icons"><?php _e('Always show social icons','wp-social-sharing');?></label></th>
 					<td>
-						<input type="checkbox" id="alws_show_icons" name="wp_social_sharing[show_icons]" value="1" <?php checked(  '1', $opts['show_icons'], true ); ?>>
+						<input type="checkbox" id="alws_show_icons" name="wp_social_sharing[show_icons]" value="1" <?php checked(  '1', $opts['show_icons'], true ); ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th><label for="before_button_text"><?php _e('Text before Sharing buttons','wp-social-sharing');?></label></th>
+					<td>
+						<input type="text" class="widefat" name="wp_social_sharing[before_button_text]" id="before_button_text" value="<?php echo esc_attr($opts['before_button_text']); ?>" /> 
 					</td>
 				</tr>
 				<tr valign="top">
 					<th><label for="facebook_text"><?php _e('Facebook Share button text','wp-social-sharing');?></label></th>
 					<td>
-						<input type="text" class="widefat" name="wp_social_sharing[facebook_text]" id="facebook_text" value="<?php echo esc_attr($opts['facebook_text']); ?>"> 
+						<input type="text" class="widefat" name="wp_social_sharing[facebook_text]" id="facebook_text" value="<?php echo esc_attr($opts['facebook_text']); ?>" /> 
 					</td>
 				</tr>
 				<tr valign="top">
 					<th><label for="twitter_text"><?php _e('Twitter Share button text','wp-social-sharing');?></label></th>
 					<td>
-						<input type="text" class="widefat" name="wp_social_sharing[twitter_text]" id="twitter_text" value="<?php echo esc_attr($opts['twitter_text']); ?>"> 
+						<input type="text" class="widefat" name="wp_social_sharing[twitter_text]" id="twitter_text" value="<?php echo esc_attr($opts['twitter_text']); ?>" /> 
 					</td>
 				</tr>
 				<tr valign="top">
