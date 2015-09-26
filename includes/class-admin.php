@@ -26,6 +26,7 @@ class SS_Admin {
 				'twitter_username' => "",
 				'auto_add_post_types' => array( 'post' ),
 				'social_options'=>array('facebook','twitter','googleplus'),
+				'social_icon_position'=>'after',
 				'load_static'=>array('load_css','load_js'),
 				'facebook_text'=>"Share on Facebook",
 				'twitter_text'=>"Share on Twitter",
@@ -33,11 +34,13 @@ class SS_Admin {
 				'linkedin_text'=>"Share on Linkedin",
 				'pinterest_text'=>"Share on Pinterest",
 				'pinterest_image'=>"",
+				'xing_text'=>"Share on Xing",
 				'show_icons'=>'0',
-				'before_button_text'=>''
+				'before_button_text'=>'',
+				'text_position'=>'left'
 		);
 		update_option( 'wp_social_sharing', $defaults );
-		update_option( 'wss_wp_social_sharing','f,t,g,l,p');
+		update_option( 'wss_wp_social_sharing','f,t,g,l,p,x');
 		update_option( 'wss_pluign_version ',SS_VERSION);
 	}
 	
@@ -60,6 +63,7 @@ class SS_Admin {
 		$settings['linkedin_text'] = trim( strip_tags( $settings['linkedin_text'] ) );
 		$settings['pinterest_text'] = trim( strip_tags( $settings['pinterest_text'] ) );
 		$settings['pinterest_image'] = trim( strip_tags( $settings['pinterest_image'] ) );
+		$settings['xing_text'] = trim( strip_tags( $settings['xing_text'] ) );
 		$settings['auto_add_post_types'] = ( isset( $settings['auto_add_post_types'] ) ) ? $settings['auto_add_post_types'] : array();
 		$settings['show_sharebutton'] = ( isset( $settings['show_sharebutton'] ) ) ? $settings['show_sharebutton'] : array();
 		return $settings;

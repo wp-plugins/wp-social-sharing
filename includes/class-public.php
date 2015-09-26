@@ -13,8 +13,7 @@ class SS_Public {
 		add_shortcode( 'wp_social_sharing',array($this,'social_sharing'));
 	}
 	
-	public function add_links_after_content( $content )
-	{
+	public function add_links_after_content( $content ){
 		$opts = ss_get_options();
 		$show_buttons = false;
 		
@@ -23,12 +22,17 @@ class SS_Public {
 		}
 			
 		$show_buttons = apply_filters( 'ss_display', $show_buttons );
-	
 		if( ! $show_buttons ) {
 			return $content;
 		}
 		$opts['icon_order']=get_option('wss_wp_social_sharing');
-		return $content . $this->social_sharing($opts);
+		
+		if($opts['social_icon_position'] == 'before' ){
+			return $this->social_sharing($opts).$content;
+		}
+		else{
+			return $content . $this->social_sharing($opts);			
+		}
 	}
 	
 	public function load_assets() 
@@ -53,16 +57,19 @@ class SS_Public {
 				'googleplus_text' => __( 'Share on Google+', 'social-sharing' ),
 				'linkedin_text' => __('Share on Linkedin', 'social-sharing' ),
 				'pinterest_text'=>__('Share on Pinterest','social-sharing'),
+				'xing_text'=>__('Share on Xing','social-sharing'),
+				'icon_order'=>'f,t,g,l,p,x',
 				'social_image'=> '', 
-				'icon_order'=>'f,t,g,l,p',
 				'show_icons'=>'0',
-				'before_button_text'=>''
+				'before_button_text'=>'',
+				'text_position'=> 'left'
 		),$atts));
 
 		if(!is_array($social_options))
 			$social_options = array_filter( array_map( 'trim', explode( ',',$social_options ) ) );
 		
 		remove_filter('the_title','wptexturize');
+		
 		$title = urlencode(html_entity_decode(get_the_title()));
 		add_filter('the_title','wptexturize');
 		
@@ -73,7 +80,7 @@ class SS_Public {
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'medium' );
 		$thumb_url = $thumb['0'];
 		if($thumb_url == ''){
-			if($atts['pinterest_image'] == ''){
+			if(isset($atts['pinterest_image']) && $atts['pinterest_image'] == ''){
 				$thumb_url = SS_PLUGIN_URL.'static/blank.jpg';								
 			}
 			else{
@@ -97,6 +104,7 @@ class SS_Public {
 		$ssbutton_googleplus='button-googleplus';
 		$ssbutton_linkedin='button-linkedin';
 		$ssbutton_pinterest='button-pinterest';
+		$ssbutton_xing='button-xing';
 		$sssocial_sharing='';
 		if($show_icons){
 			$sssocial_sharing='ss-social-sharing';
@@ -105,13 +113,14 @@ class SS_Public {
 			$ssbutton_googleplus='ss-button-googleplus';
 			$ssbutton_linkedin='ss-button-linkedin';	
 			$ssbutton_pinterest='ss-button-pinterest';
+			$ssbutton_xing='ss-button-xing';
 		}
 		$icon_order=explode(',',$icon_order);
 		ob_start();
 		?>
 		<div class="social-sharing <?php echo $sssocial_sharing;?>">
-			<?php if(!empty($before_button_text)):?>
-			<span><?php echo $before_button_text; ?></span>
+			<?php if(!empty($before_button_text) && ($text_position == 'left' || $text_position == 'top')):?>
+			<span class="<?php echo $text_position;?> before-sharebutton-text"><?php echo $before_button_text; ?></span>
 	        <?php endif;?>
 	        <?php 
 	        foreach($icon_order as $o) {
@@ -140,9 +149,17 @@ class SS_Public {
 	        			if(in_array('pinterest', $social_options)){
 	        				?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_pinterest;?>" href="http://pinterest.com/pin/create/button/?url=<?php echo $url;?>&media=<?php echo $social_image;?>&description=<?php echo $title;?>" target="_blank" ><?php echo $pinterest_text; ?></a><?php
 	        			}
+					break;
+                    case 'x':
+                        if(in_array('xing', $social_options)){
+                    	    ?><a <?php echo $loadjs;?> rel="external nofollow" class="<?php echo $ssbutton_xing;?>" href="https://www.xing.com/spi/shares/new?url=<?php echo $url;?>" target="_blank" ><?php echo $xing_text; ?></a><?php
+                        }
 	        		break;
 	        	}
 	        } ?>
+	        <?php if(!empty($before_button_text) && ($text_position == 'bottom' || $text_position == 'right')):?>
+			<span class="<?php echo $text_position;?>  before-sharebutton-text"><?php echo $before_button_text; ?></span>
+	        <?php endif;?>
 	    </div>
 	    <?php
 	  	$output = ob_get_contents();

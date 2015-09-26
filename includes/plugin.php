@@ -5,15 +5,14 @@ if( ! defined("SS_VERSION") ) {
 	exit;
 }
 
-function ss_get_options()
-{	
+function ss_get_options(){	
 	static $options;
 
 	if( ! $options ) {
 		$defaults = array(
 			'twitter_username' => "",
 			'auto_add_post_types' => array( 'post' ),
-			'social_options'=>array('facebook','twitter','googleplus','linkedin','pinterest'),
+			'social_options'=>array('facebook','twitter','googleplus','linkedin','pinterest','xing'),
 			'load_static'=>array('load_css','load_js'),
 			'facebook_text'=>"Share on Facebook",
 			'twitter_text'=>"Share on Twitter",
@@ -21,7 +20,9 @@ function ss_get_options()
 			'linkedin_text'=>"Share on Linkedin",
 			'pinterest_text'=>"Share on Pinterest",
 			'pinterest_image'=>"",
+			'xing_text'=>"Share on Xing",
 			'before_button_text'=>'',
+			'text_position' => 'left'
 		);
 
 		$db_option = get_option( 'wp_social_sharing', array());
@@ -43,6 +44,7 @@ function ss_get_options()
 	}
 	return $options;
 }
+
 add_action('admin_footer','include_icon_order_script');
 function include_icon_order_script(){
 	wp_enqueue_script( 'jquery-ui-sortable' );
