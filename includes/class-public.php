@@ -83,6 +83,9 @@ class SS_Public {
 			if(isset($atts['pinterest_image']) && $atts['pinterest_image'] == ''){
 				$thumb_url = SS_PLUGIN_URL.'static/blank.jpg';								
 			}
+			elseif( !isset($atts['pinterest_image']) ){
+				$thumb_url = SS_PLUGIN_URL.'static/blank.jpg';
+			}
 			else{
 				$thumb_url = $atts['pinterest_image'];	
 			}
